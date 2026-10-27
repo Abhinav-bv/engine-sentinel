@@ -2,6 +2,8 @@
 
 **A small, explainable engine telemetry triage prototype.**
 
+[View the demo report](https://abhinav-bv.github.io/engine-sentinel/) · [Read the analysis code](engine_sentinel.py)
+
 Fleet alerts can be noisy: one odd reading may be a sensor glitch, while missing data can make a confident looking score unreliable. Engine Sentinel looks for *sustained* changes, compares recent readings with each engine's own baseline, checks fault persistence, and shows exactly why each engine received its status.
 
 This was built as a portfolio project inspired by the kinds of monitoring problems described in [Cummins Connected Solutions](https://connectedsolutions.cummins.com/) and [Cummins Remote Diagnostics](https://www.cummins.com/parts-and-service/digital-products-and-services/remote-diagnostics). It is independent, uses entirely synthetic data, and is not affiliated with Cummins.
@@ -44,6 +46,18 @@ Required columns: `engine_id,timestamp_utc,rpm,coolant_temp_c,oil_pressure_kpa,b
 - Displays the reasons, coverage, score and sensor trends together.
 
 The thresholds are **illustrative**, not calibrated to an engine model, duty cycle or operating state. In a real project I would normalize readings by RPM/load, validate against labeled service outcomes, measure false alarms and lead time, and review thresholds with domain engineers. This tool must not be used for actual vehicle operation or maintenance decisions.
+
+## Design decisions
+
+| Decision | Why it matters |
+| --- | --- |
+| Score repeated breaches, not one value | Reduces reaction to an isolated sensor spike. |
+| Compare with an engine's own early samples | Makes the change visible even when a universal threshold is not crossed. |
+| Count recent sensor coverage | Missing values should lower confidence, never silently become zero. |
+| Show reason text beside every score | A maintenance reviewer can inspect the evidence instead of trusting a black box. |
+| Use a fixed random seed | Anyone can reproduce the demo and tests. |
+
+The six scenario checks are automated in `test_engine_sentinel.py`. The code also checks that a malformed CSV gets a useful error message. Run them with `python -m unittest -v` from this folder.
 
 ## What I would discuss in an interview
 
