@@ -2,6 +2,8 @@
 
 **A small, explainable engine telemetry triage prototype.**
 
+My angle: **quiet signals, clear calls**. A maintenance alert should show its evidence and admit when the sensor feed is too thin to trust.
+
 [View the demo report](https://abhinav-bv.github.io/engine-sentinel/) · [Read the analysis code](engine_sentinel.py)
 
 Fleet alerts can be noisy: one odd reading may be a sensor glitch, while missing data can make a confident looking score unreliable. Engine Sentinel looks for *sustained* changes, compares recent readings with each engine's own baseline, checks fault persistence, and shows exactly why each engine received its status.
