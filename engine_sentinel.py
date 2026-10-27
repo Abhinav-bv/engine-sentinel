@@ -194,8 +194,8 @@ header p{{color:#b7c5d5;line-height:1.5;max-width:760px}}main{{max-width:1100px;
 .metric{{font-size:13px;color:#aebdd0}}.charts{{border-top:1px solid #33475e;border-bottom:1px solid #33475e;padding:10px 0}}
 .sensor{{display:grid;grid-template-columns:105px 1fr 42px;align-items:center;gap:10px;font-size:12px;color:#bdcbe0}}svg{{width:100%;height:42px}}small{{text-align:right}}
 h3{{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:#8bd8c4}}li{{margin:7px 0;line-height:1.4}}ul{{padding-left:19px}}.note{{font-size:13px;color:#aebdd0;line-height:1.5;margin:30px 0}}
-</style></head><body><header><div class="eyebrow">Portfolio prototype · synthetic demo</div><h1>Engine Sentinel</h1>
-<p>Explainable maintenance triage for engine telemetry. Repeated readings, baseline changes and fault persistence determine priority; low coverage produces an explicit data-quality warning.</p></header>
+</style></head><body><header><div class="eyebrow">Abhinav's portfolio lab · synthetic demo</div><h1>Engine Sentinel</h1>
+<p>Quiet signals. Clear calls. A maintenance triage experiment that shows why an engine is flagged and when the data is too thin to trust.</p></header>
 <main><div class="summary"><span>Service soon: <b>{counts["SERVICE SOON"]}</b></span><span>Watch: <b>{counts["WATCH"]}</b></span><span>Normal: <b>{counts["NORMAL"]}</b></span><span>Insufficient data: <b>{counts["INSUFFICIENT DATA"]}</b></span></div>
 <div class="grid">{"".join(cards)}</div><p class="note">Source: {html.escape(source.name)}. Scores and thresholds are illustrative and are not validated for real engines. Do not use this report for vehicle operation or maintenance decisions.</p></main></body></html>'''
 
